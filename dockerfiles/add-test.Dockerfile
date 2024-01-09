@@ -1,6 +1,6 @@
 # https://docs.docker.com/engine/reference/builder/
 
-# 베이스가 되는 OS 지정
+# 베이스가 되는 도커 이미지 지정
 FROM --platform=linux/amd64 ubuntu:22.04
 
 # 필요 패키지 설치
