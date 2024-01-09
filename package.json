@@ -1,0 +1,9 @@
+{
+  "name": "dockerfile_sample",
+  "description": "Dockerfile 샘플 구현 및 테스트 겸용 레포지토리 입니다.",
+  "version": "0.0.1",
+  "scripts": {
+    "add-test:build": "docker build --no-cache -t add-test-image:test-0.0.1 -f ./dockerfiles/add-test.Dockerfile ./dockerfiles/",
+    "add-test:create-container": "docker run --name add-test-container -it add-test-image:test-0.0.1"
+  }
+}
