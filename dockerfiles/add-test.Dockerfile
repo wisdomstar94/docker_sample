@@ -1,11 +1,11 @@
 # https://docs.docker.com/engine/reference/builder/
 
 # 베이스가 되는 도커 이미지 지정
-FROM --platform=linux/amd64 ubuntu:22.04
+FROM --platform=linux/arm64 ubuntu:22.04
 
 # 필요 패키지 설치
-RUN apt-get update -y
-RUN apt-get install vim -y
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install vim curl net-tools telnet -y
 
 # UTF-8 설정
 ENV LC_ALL=C.UTF-8
