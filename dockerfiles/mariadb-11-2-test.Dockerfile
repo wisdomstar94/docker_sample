@@ -7,19 +7,21 @@ FROM --platform=linux/arm64 ubuntu:22.04
 ARG MARIADB_PORT=3306
 ARG MARIADB_ROOT_PASSWORD=112233aB*
 
-# 기본 ENV 값 셋팅
-ENV MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD
-
 # 필요 패키지 설치
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install vim curl net-tools telnet -y
 
 # 한글 UTF-8 언어팩 설치 및 적용
 # 언어셋이 ko_KR.UTF-8 로 설정됨
-RUN apt-get install language-pack-ko -y \
-    && locale-gen ko_KR.UTF-8 \
-    && update-locale LANG=ko_KR.UTF-8 LC_MESSAGES=POSIX \
-    && export LANG=ko_KR.UTF-8
+RUN apt-get install locales -y \
+    && localedef -f UTF-8 -i ko_KR ko_KR.UTF-8
+
+# 타임존 설정 (6. Asia / 69. Seoul)
+RUN (echo "6"; echo "69") | apt-get install tzdata -y
+
+# 기본 ENV 값 셋팅
+ENV MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD
+ENV LC_ALL=ko_KR.UTF-8
 
 # mariadb 설치 및 기본 셋팅 (root 계정의 비밀번호 설정 및 사용자 추가 등)
 RUN curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=11.2

@@ -7,6 +7,12 @@
     "add-test:create-container": "docker run --name add-test-container -it add-test-image:test-0.0.1",
 
     "mariadb-11-2-test:build": "docker build --build-arg MARIADB_PORT=8887 --no-cache -t mariadb-11-2-test-image:test-0.0.1 -f ./dockerfiles/mariadb-11-2-test.Dockerfile ./dockerfiles/",
-    "mariadb-11-2-test:create-container": "docker run --env-file ./.env --name mariadb-11-2-test -h mariadb -it -d mariadb-11-2-test-image:test-0.0.1"
+    "mariadb-11-2-test:create-container": "docker run --env-file ./.env --name mariadb-11-2-test -h mariadb -it -d mariadb-11-2-test-image:test-0.0.1",
+    
+    "mariadb-11-2-test:compose-up": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml up",
+    "mariadb-11-2-test:compose-stop": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml stop",
+    "mariadb-11-2-test:compose-down": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml down",
+    "mariadb-11-2-test:ps": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml ps",
+    "mariadb-11-2-test:scale-up": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml scale mariadb=3"
   }
 }

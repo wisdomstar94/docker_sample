@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:11.2
+    # container_name: service-mariadb scale 이 필요할 경우에는 container_name 을 제거해야 함.
+    env_file: ../.env
+    environment: 
+      MARIADB_ROOT_PASSWORD: 112233aB*
+    networks:
+      - my-service-network
+    depends_on:
+      - mariadb2 # mariadb2 에 해당하는 컨테이너가 먼저 구동되기까지 기다린다는 의미
+    restart: always
+    expose: 
+      - 3306
+    # 만약 mariadb 서비스를 scale up 하게 되면 동일 서비스로 여러개의 컨테이너가 생성되는데
+    # 이 때 mariadb2 서비스의 컨테이너에서 mariadb 호스트로 접근할 경우 로드밸런싱이 적용되어 접근됨!
+    # ex) mariadb2 에서 mariadb 호스토로 첫번째 접근 -> mariadb 서비스의 1번째 컨테이너로 접근됨
+    #     mariadb2 에서 mariadb 호스토로 두번째 접근 -> mariadb 서비스의 3번째 컨테이너로 접근됨
+    #     mariadb2 에서 mariadb 호스토로 두번째 접근 -> mariadb 서비스의 2번째 컨테이너로 접근됨
+    #     mariadb2 에서 mariadb 호스토로 두번째 접근 -> mariadb 서비스의 3번째 컨테이너로 접근됨
+    #     ...
+  
+  mariadb2:
+    image: mariadb:11.2
+    # container_name: service-mariadb scale 이 필요할 경우에는 container_name 을 제거해야 함.
+    env_file: ../.env
+    environment: 
+      MARIADB_ROOT_PASSWORD: 112233aB*
+    networks:
+      - my-service-network
+    restart: always
+    expose:
+      - 3306
+
+networks:
+  my-service-network:
+    name: my-service-network
