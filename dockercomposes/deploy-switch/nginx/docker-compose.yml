@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  nginx:
+    hostname: nginx
+    image: wisdomstar94/mariadb-11-2:0.0.1
+    env_file: ../../../.env
+    networks:
+      - my-service-network
+    restart: on-failure
+    expose: 
+      - 3306
+networks:
+  my-service-network:
+    name: my-service-network

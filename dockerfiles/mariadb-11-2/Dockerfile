@@ -44,4 +44,4 @@ ADD --chmod=755 ./mariadb-always.sh /home/cli/mariadb-always.sh
 EXPOSE $MARIADB_PORT
 
 # 컨테이너가 실행될 때 실행될 명령어 지정
-ENTRYPOINT ["/bin/bash", "-c", "/home/cli/onece-exec run --path='/home/cli/mariadb-inited.txt' --onece='sh /home/cli/mariadb-init.sh' --always='sh /home/cli/mariadb-always.sh'; /bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c", "/home/cli/onece-exec run --path='/home/cli/mariadb-inited.txt' --onece='sh /home/cli/mariadb-init.sh' --always='sh /home/cli/mariadb-always.sh' && tail -f /etc/mysql/mariadb.conf.d/50-server.cnf"]
