@@ -12,7 +12,16 @@
     "mariadb-11-2-test:compose-up": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml up",
     "mariadb-11-2-test:compose-stop": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml stop",
     "mariadb-11-2-test:compose-down": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml down",
-    "mariadb-11-2-test:ps": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml ps",
-    "mariadb-11-2-test:scale-up": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml scale mariadb=3"
+    "mariadb-11-2-test:compose-ps": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml ps",
+    "mariadb-11-2-test:compose-scale-up": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml scale mariadb=3",
+
+    "image-update-test:compose-up": "docker-compose -f ./dockercomposes/image-update-test.yml up",
+    "image-update-test:compose-up-with-d": "docker-compose -f ./dockercomposes/image-update-test.yml up -d",
+    "image-update-test:compose-stop": "docker-compose -f ./dockercomposes/image-update-test.yml stop",
+    "image-update-test:compose-down": "docker-compose -f ./dockercomposes/image-update-test.yml down",
+    "image-update-test:compose-ps": "docker-compose -f ./dockercomposes/image-update-test.yml ps",
+    "image-update-test:compose-scale-up": "docker-compose -f ./dockercomposes/image-update-test.yml scale mariadb=3",
+    "image-update-test:compose-scale-down": "docker-compose -f ./dockercomposes/image-update-test.yml scale mariadb=1",
+    "image-update-test:compose-up-d-with-scale": "docker-compose -f ./dockercomposes/image-update-test.yml up -d --scale mariadb=3"
   }
 }

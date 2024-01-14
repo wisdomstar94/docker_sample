@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  mariadb:
+    hostname: mariadb
+    image: my-mariadb:0.0.4
+    env_file: ../.env
+    networks:
+      - my-service-network
+    restart: always
+    expose: 
+      - 3306
+  single:
+    hostname: single
+    image: mariadb:11.2
+    # container_name: service-mariadb scale 이 필요할 경우에는 container_name 을 제거해야 함.
+    env_file: ../.env
+    environment: 
+      MARIADB_ROOT_PASSWORD: 112233aB*
+    networks:
+      - my-service-network
+    depends_on:
+      - mariadb # mariadb2 에 해당하는 컨테이너가 먼저 구동되기까지 기다린다는 의미
+    restart: always
+    expose:
+      - 3306
+networks:
+  my-service-network:
+    name: my-service-network
