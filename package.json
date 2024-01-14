@@ -3,25 +3,13 @@
   "description": "Dockerfile 샘플 구현 및 테스트 겸용 레포지토리 입니다.",
   "version": "0.0.1",
   "scripts": {
-    "add-test:build": "docker build --no-cache -t add-test-image:test-0.0.1 -f ./dockerfiles/add-test.Dockerfile ./dockerfiles/",
-    "add-test:create-container": "docker run --name add-test-container -it add-test-image:test-0.0.1",
+    "wisdomstar94/ubuntu-basic:build": "docker build --no-cache -t wisdomstar94/ubuntu-basic:0.0.1 -f ./dockerfiles/ubuntu-basic/Dockerfile ./dockerfiles/ubuntu-basic",
+    "wisdomstar94/ubuntu-basic:create-container": "docker run --name ubuntu-basic-container -it wisdomstar94/ubuntu-basic:0.0.1",
 
-    "mariadb-11-2-test:build": "docker build --build-arg MARIADB_PORT=8887 --no-cache -t mariadb-11-2-test-image:test-0.0.1 -f ./dockerfiles/mariadb-11-2-test.Dockerfile ./dockerfiles/",
-    "mariadb-11-2-test:create-container": "docker run --env-file ./.env --name mariadb-11-2-test -h mariadb -it -d mariadb-11-2-test-image:test-0.0.1",
-    
-    "mariadb-11-2-test:compose-up": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml up",
-    "mariadb-11-2-test:compose-stop": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml stop",
-    "mariadb-11-2-test:compose-down": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml down",
-    "mariadb-11-2-test:compose-ps": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml ps",
-    "mariadb-11-2-test:compose-scale-up": "docker-compose -f ./dockercomposes/mariadb-11-2-test.yml scale mariadb=3",
+    "wisdomstar94/mariadb-11-2:build": "docker build --build-arg MARIADB_PORT=8887 --no-cache -t wisdomstar94/mariadb-11-2:0.0.1 -f ./dockerfiles/mariadb-11-2/Dockerfile ./dockerfiles/mariadb-11-2",
+    "wisdomstar94/mariadb-11-2:create-container": "docker run --env-file ./.env --name mariadb-11-2-container -h mariadb -it -d wisdomstar94/mariadb-11-2:0.0.1",
 
-    "image-update-test:compose-up": "docker-compose -f ./dockercomposes/image-update-test.yml up",
-    "image-update-test:compose-up-with-d": "docker-compose -f ./dockercomposes/image-update-test.yml up -d",
-    "image-update-test:compose-stop": "docker-compose -f ./dockercomposes/image-update-test.yml stop",
-    "image-update-test:compose-down": "docker-compose -f ./dockercomposes/image-update-test.yml down",
-    "image-update-test:compose-ps": "docker-compose -f ./dockercomposes/image-update-test.yml ps",
-    "image-update-test:compose-scale-up": "docker-compose -f ./dockercomposes/image-update-test.yml scale mariadb=3",
-    "image-update-test:compose-scale-down": "docker-compose -f ./dockercomposes/image-update-test.yml scale mariadb=1",
-    "image-update-test:compose-up-d-with-scale": "docker-compose -f ./dockercomposes/image-update-test.yml up -d --scale mariadb=3"
+    "wisdomstar94/add-test:build": "docker build --no-cache -t wisdomstar94/add-test:0.0.1 -f ./dockerfiles/add-test/Dockerfile ./dockerfiles/add-test",
+    "wisdomstar94/add-test:create-container": "docker run --name add-test-container -it wisdomstar94/add-test:0.0.1"
   }
 }
