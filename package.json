@@ -12,6 +12,9 @@
     "wisdomstar94/add-test:build": "docker build --no-cache -t wisdomstar94/add-test:0.0.1 -f ./dockerfiles/add-test/Dockerfile ./dockerfiles/add-test",
     "wisdomstar94/add-test:create-container": "docker run --name add-test-container -it wisdomstar94/add-test:0.0.1",
 
+    "wisdomstar94/gitlab:build": "docker build --no-cache --build-arg PORT=8081 -t wisdomstar94/gitlab:0.0.1 -f ./dockerfiles/gitlab/Dockerfile ./dockerfiles/gitlab",
+    "wisdomstar94/gitlab:create-container": "docker run --name gitlab-container -e ROOT_PASSWORD='112233aB@' -p 8081:8081 -it wisdomstar94/gitlab:0.0.1",
+
     "deploy-switch/nginx:up": "docker compose -f ./dockercomposes/deploy-switch/nginx/docker-compose.yml up",
     "deploy-switch/nginx:stop": "docker compose -f ./dockercomposes/deploy-switch/nginx/docker-compose.yml stop",
     "deploy-switch/nginx:down": "docker compose -f ./dockercomposes/deploy-switch/nginx/docker-compose.yml down",
