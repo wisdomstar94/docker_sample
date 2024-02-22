@@ -41,7 +41,7 @@ vim /etc/gitlab/initial_root_password
 
 <br />
 
-## gitlab-runner 등록 방법
+## gitlab-runner 등록 방법 (레거시)
 1. gitlab -> Admin Area -> Ci/CD -> Runners 으로 이동
 2. New Instance runner 버튼 옆에 더보기 심볼 아이콘을 클릭 후 Registration token 을 복사해둠
 3. gitlab 이 설치된 서버 터미널에서 아래 명령어를 실행
@@ -54,6 +54,34 @@ gitlab-runner register
 gitlab-runner start
 ```
 or
+```
+gitlab-runner restart
+```
+<br />
+
+## gitlab-runner 등록 방법 (신규) 
+1. gitlab -> Admin Area -> Ci/CD -> Runners 으로 이동
+2. New Instance runner 버튼을 클릭해 러너를 관리자 콘솔 페이지에서 생성
+3. 화면에 표시되는 명령어들을 터미널에 입력
+
+<br />
+
+또는 아래처럼 프로젝트 전용 러너를 따로 생성할 수도 있음. <br />
+
+1. 레포지토리 -> Settings -> CI/CD -> Runners (Expand) -> New Project Runner 버튼 클릭
+
+<br />
+
+## gitlab-runner executer 를 docker 로 사용할 때 config.toml 수정 필요
+1. vim /etc/gitlab-runner/config.toml
+2. [runners.docker] 항목에서 아래 ```키=값``` 추가 및 변경
+```
+privileged = true
+```
+```
+network_mode = "host"
+```
+3. gitlab-runner 재시작
 ```
 gitlab-runner restart
 ```

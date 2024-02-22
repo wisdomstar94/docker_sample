@@ -16,7 +16,7 @@ ADD --chmod=755 ./entrypoint.sh /home/entrypoint.sh
 ADD --chmod=755 ./init.sh /home/init.sh
 ADD --chmod=755 ./onece-exec /home/onece-exec
 
-SHELL ["/bin/bash", "--login", "-c"]
+# SHELL ["/bin/bash", "--login", "-c"]
 
 # node.js 셋팅
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use $NODE_VERSION && nvm alias default $NODE_VERSION"
