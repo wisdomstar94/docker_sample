@@ -12,7 +12,7 @@ ENV NVM_DIR=/usr/local/nvm
 
 # 필요 패키지 설치
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install vim curl net-tools telnet iputils-ping wget git -y
+RUN apt-get install vim curl net-tools telnet iputils-ping wget git gnupg -y
 
 # 한글 UTF-8 언어팩 설치 및 적용
 # 언어셋이 ko_KR.UTF-8 로 설정됨

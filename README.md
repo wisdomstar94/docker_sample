@@ -85,3 +85,10 @@ network_mode = "host"
 ```
 gitlab-runner restart
 ```
+
+<br />
+
+## jenkins 초기 비밀번호 확인
+```
+vim /var/lib/jenkins/secrets/initialAdminPassword
+```

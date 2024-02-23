@@ -15,6 +15,10 @@
     "wisdomstar94/gitlab:build": "docker build --no-cache --build-arg PORT=8081 -t wisdomstar94/gitlab:0.0.1 -f ./dockerfiles/gitlab/Dockerfile ./dockerfiles/gitlab",
     "wisdomstar94/gitlab:create-container": "docker run --name gitlab-container --network my-network -e ROOT_PASSWORD='112233aB@' -p 8081:8081 -p 22:22 -v /var/run/docker.sock:/var/run/docker.sock -it wisdomstar94/gitlab:0.0.1",
 
+    "wisdomstar94/jenkins:build": "docker build --no-cache -t wisdomstar94/jenkins:0.0.1 -f ./dockerfiles/jenkins/Dockerfile ./dockerfiles/jenkins",
+    "wisdomstar94/jenkins:create-container": "docker run --name jenkins-container --network my-network -p 8080:8080 -it wisdomstar94/jenkins:0.0.1",
+
+
 
 
     "deploy-switch/nginx:up": "docker compose -f ./dockercomposes/deploy-switch/nginx/docker-compose.yml up",
