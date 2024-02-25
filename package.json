@@ -6,7 +6,7 @@
     "wisdomstar94/ubuntu-basic:build": "docker build --no-cache -t wisdomstar94/ubuntu-basic:0.0.1 -f ./dockerfiles/ubuntu-basic/Dockerfile ./dockerfiles/ubuntu-basic",
     "wisdomstar94/ubuntu-basic:create-container": "docker run --name ubuntu-basic-container -it wisdomstar94/ubuntu-basic:0.0.1",
 
-    "wisdomstar94/mariadb-11-2:build": "docker build --build-arg MARIADB_PORT=8887 --no-cache -t wisdomstar94/mariadb-11-2:0.0.1 -f ./dockerfiles/mariadb-11-2/Dockerfile ./dockerfiles/mariadb-11-2",
+    "wisdomstar94/mariadb-11-2:build": "docker build --build-arg MARIADB_PORT=3306 --no-cache -t wisdomstar94/mariadb-11-2:0.0.1 -f ./dockerfiles/mariadb-11-2/Dockerfile ./dockerfiles/mariadb-11-2",
     "wisdomstar94/mariadb-11-2:create-container": "docker run --env-file ./.env --name mariadb-11-2-container -h mariadb -it -d wisdomstar94/mariadb-11-2:0.0.1",
 
     "wisdomstar94/add-test:build": "docker build --no-cache -t wisdomstar94/add-test:0.0.1 -f ./dockerfiles/add-test/Dockerfile ./dockerfiles/add-test",

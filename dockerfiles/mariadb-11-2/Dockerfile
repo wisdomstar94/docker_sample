@@ -28,6 +28,9 @@ RUN sed -i'' -r -e "/\[mariadb-client\]/a\default-character-set = utf8mb4" /etc/
     && sed -i'' -r -e "/\[mariadb-show\]/a\default-character-set = utf8mb4" /etc/mysql/mariadb.conf.d/50-mariadb-clients.cnf \
     && sed -i'' -r -e "/\[mariadb-slap\]/a\default-character-set = utf8mb4" /etc/mysql/mariadb.conf.d/50-mariadb-clients.cnf
 
+# mariadb 기본 타임존을 한국 시간대로 설정
+RUN sed -i'' -r -e "/\[mariadbd\]/a\default-time-zone='+9:00'" /etc/mysql/mariadb.conf.d/50-server.cnf
+
 # mariadb port 변경
 RUN sed -i'' -r -e "/user                    = mysql/a\port            = $MARIADB_PORT" /etc/mysql/mariadb.conf.d/50-server.cnf
 
@@ -44,4 +47,4 @@ ADD --chmod=755 ./mariadb-always.sh /home/cli/mariadb-always.sh
 EXPOSE $MARIADB_PORT
 
 # 컨테이너가 실행될 때 실행될 명령어 지정
-ENTRYPOINT ["/bin/bash", "-c", "/home/cli/onece-exec run --path='/home/cli/mariadb-inited.txt' --onece='sh /home/cli/mariadb-init.sh' --always='sh /home/cli/mariadb-always.sh' && tail -f /etc/mysql/mariadb.conf.d/50-server.cnf"]
+ENTRYPOINT ["/bin/bash", "-c", "/home/cli/onece-exec run --path='/home/cli/mariadb-inited.txt' --onece='sh /home/cli/mariadb-init.sh' --always='sh /home/cli/mariadb-always.sh' && bash"]
