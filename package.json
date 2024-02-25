@@ -3,6 +3,8 @@
   "description": "Dockerfile 샘플 구현 및 테스트 겸용 레포지토리 입니다.",
   "version": "0.0.1",
   "scripts": {
+    "my-network:create": "docker network create my-network",
+
     "wisdomstar94/ubuntu-basic:build": "docker build --no-cache -t wisdomstar94/ubuntu-basic:0.0.1 -f ./dockerfiles/ubuntu-basic/Dockerfile ./dockerfiles/ubuntu-basic",
     "wisdomstar94/ubuntu-basic:create-container": "docker run --name ubuntu-basic-container -it wisdomstar94/ubuntu-basic:0.0.1",
 
