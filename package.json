@@ -20,6 +20,7 @@
     "wisdomstar94/jenkins:build": "docker build --no-cache -t wisdomstar94/jenkins:0.0.1 -f ./dockerfiles/jenkins/Dockerfile ./dockerfiles/jenkins",
     "wisdomstar94/jenkins:create-container": "docker run --name jenkins-container --network my-network -p 8080:8080 -it wisdomstar94/jenkins:0.0.1",
 
+    "sonatype/nexus3:create-container": "docker run -d -p 8081:8081 --name nexus sonatype/nexus3",
 
 
 
